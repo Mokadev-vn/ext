@@ -1,0 +1,47 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "1.0",
+  "name": "Auto React Story",
+  "description": "Post Reaction Custom Story Facebook",
+  "offline_enabled": true,
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "/js/axios.js",
+      "/js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.facebook.com/*",
+        "https://*.facebook.com/*"
+      ],
+      "js": [
+        "js/app.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "/images/icon.png"
+    }
+  },
+  "icons": {
+    "128": "/images/icon.png"
+  },
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "activeTab", 
+    "tabs",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "web_accessible_resources": [
+    "*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google-analytics.com https://ssl.google-analytics.com https://ajax.googleapis.com https://apis.google.com; object-src 'self'",
+  "manifest_version": 2
+}
